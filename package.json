@@ -7,7 +7,8 @@
     "test": "NODE_ENV=test nyc mocha spec/**/*.spec.js --timeout 5000",
     "test:watch": "npm test -- --watch",
     "build": "babel src --out-dir lib",
-    "start": "babel-node src/index.js"
+    "start": "set NODE_ENV=production && babel-node src/web/index.js",
+    "dev-start": "set NODE_ENV=development&& babel-node src/web/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,10 @@
   "homepage": "https://github.com/rkterungwa16/expense-tracker-server#readme",
   "dependencies": {
     "@babel/register": "^7.0.0",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "es6-promisify": "^6.0.0",
     "express": "^4.16.3",
     "joi": "^13.6.0",
     "winston": "^3.0.0"
