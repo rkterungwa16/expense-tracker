@@ -8,10 +8,24 @@ const development = {
   server: {
     port: parseInt(process.env.DEV_APP_PORT) || 3000
   },
+  tokenSecret: process.env.SECRET_KEY,
   database: {
-    host: process.env.DEV_DB_HOST || 'localhost',
-    port: parseInt(process.env.DEV_DB_PORT) || 27017,
-    name: process.env.DEV_DB_NAME || 'db'
+    mongodb: {
+      host: process.env.DEV_DB_HOST || 'localhost',
+      port: parseInt(process.env.DEV_DB_PORT) || 27017,
+      name: process.env.DEV_DB_NAME || 'db'
+    },
+    postgres: {},
+    sqlite: {}
+  },
+  nodemailer: {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'terungwakombol@gmail.com',
+      pass: process.env.SMTP_PASSWORD
+    }
   }
 }
 const test = {

@@ -28,12 +28,15 @@
   "homepage": "https://github.com/rkterungwa16/expense-tracker-server#readme",
   "dependencies": {
     "@babel/register": "^7.0.0",
-    "bluebird": "^3.5.1",
+    "args-list": "^0.3.3",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "es6-promisify": "^6.0.0",
     "express": "^4.16.3",
     "joi": "^13.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.14",
     "winston": "^3.0.0"
   },
   "devDependencies": {
@@ -51,7 +54,10 @@
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
+    "nock": "^9.6.1",
     "nyc": "^13.0.1",
+    "sinon": "^6.2.0",
+    "sinon-chai": "^3.2.0",
     "standard": "^11.0.1",
     "supertest": "^3.1.0"
   }
