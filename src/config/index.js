@@ -11,6 +11,7 @@ const development = {
   tokenSecret: process.env.SECRET_KEY,
   database: {
     mongodb: {
+      url: 'mongodb://localhost/db',
       host: process.env.DEV_DB_HOST || 'localhost',
       port: parseInt(process.env.DEV_DB_PORT) || 27017,
       name: process.env.DEV_DB_NAME || 'db'

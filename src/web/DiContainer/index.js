@@ -1,4 +1,6 @@
-import argsList from 'args-list'
+// import argsList from 'args-list'
+// import { extractArgsList } from 'es6-class-constructor-args-list/src'
+import { extractArgsList } from './extractArgsList'
 
 class DiContainer {
   constructor () {
@@ -30,7 +32,8 @@ class DiContainer {
   }
 
   /**
-   * Get desired module factory
+   * Check if name is a registered dependency or a registered factory
+   * If not a dep but a factory and
    *
    * @param {*} name
    */
@@ -38,22 +41,41 @@ class DiContainer {
     if (!this.dependencies[name]) {
       const factory = this.factories[name]
       this.dependencies[name] = factory &&
-        this.diContainer.inject(factory)
+        this.inject(factory)
       if (!this.dependencies[name]) {
         throw new Error(`Cannot find module ${name}`)
       }
     }
-
     return this.dependencies[name]
   }
 
-  inject (factory) {
-    const args = argsList(factory)
+  /**
+   * Get the factory object
+   * Collect all argument of factory consisting of dependency names
+   * get factory of each retrieved depency
+   * Invoke these factories
+   *
+   * Note: this invokes all arguments of a module
+   * It assumes arguments represents factories
+   *
+   * The aim of this function is to invoke given factory
+   * Not that arg of a factory is similar of string key
+   * in dependency object
+   *
+   * The string is required to get the factory hence the use of argList
+   * which gets all factory arguments as an array of strings
+   *
+   * @param {*} factory
+   */
+  inject (Factory) {
+    const args = extractArgsList(Factory)
       .map((dependency) => {
-        return this.diContainer.get(dependency)
+        return this.get(dependency)
       })
-    return factory.apply(null, args)
+    console.log('args', args)
+    return new Factory(...args)
   }
 }
-
+// Problem: cannot read constructor arguments at run time
+// Get the parameters of a constructor
 export default DiContainer

@@ -3,12 +3,15 @@ import logger from 'winston'
 import Db from './db'
 
 class MongoDb extends Db {
-  constructor (dbType) {
+  constructor (dbUrl) {
     super()
-    this.dbType = dbType
+    this.dbUrl = dbUrl
   }
-  connect (url, cb) {
-    mongoose.connect(this.dbConfig.url, { safe: true })
+  connect (url) {
+    mongoose.connect(this.dbUrl, { safe: true })
+      .then((data) => {
+        logger.info(`database connection true: \n${data}`)
+      })
       .catch((err) => {
         logger.error(`database connection failure: \n${err.stack}`)
         process.exit(1)

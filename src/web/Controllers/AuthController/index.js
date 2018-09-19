@@ -6,6 +6,7 @@ class AuthController {
   constructor (authService) {
     this.authService = authService
   }
+
   /**
    *
    * @param {Object} req request object
