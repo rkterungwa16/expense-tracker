@@ -32,7 +32,7 @@
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
-    "es6-class-constructor-args-list": "0.0.1",
+    "es6-class-constructor-args-list": "0.0.3",
     "es6-promisify": "^6.0.0",
     "express": "^4.16.3",
     "joi": "^13.6.0",

@@ -1,6 +1,6 @@
 // import argsList from 'args-list'
-// import { extractArgsList } from 'es6-class-constructor-args-list/src'
-import { extractArgsList } from './extractArgsList'
+import { extractArgsList } from 'es6-class-constructor-args-list'
+// import { extractArgsList } from './extractArgsList'
 
 class DiContainer {
   constructor () {
@@ -72,7 +72,6 @@ class DiContainer {
       .map((dependency) => {
         return this.get(dependency)
       })
-    console.log('args', args)
     return new Factory(...args)
   }
 }

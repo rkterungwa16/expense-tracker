@@ -1,5 +1,6 @@
 import express from 'express'
 // import bodyParser from 'body-parser'
+import authRoute from './Routes/AuthRoutes'
 import DiContainer from '../web/DiContainer'
 import AuthController from '../web/Controllers/AuthController/'
 import AuthService from '../web/Services/AuthService/'
@@ -22,5 +23,6 @@ dbConnect.connect(config.database.mongodb.url)
 const authController = diContainer.get('authController')
 
 const app = express()
+authRoute(app, authController)
 
 export default app

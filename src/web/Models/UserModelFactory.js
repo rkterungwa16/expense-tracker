@@ -17,12 +17,18 @@ class UserModelFactory {
       .then((user) => {
         return user
       })
+      .catch((err) => {
+        return new Error(`User does not exist with this username ${err}`)
+      })
   }
 
   findUserByEmail (email) {
     this.UserModel.findOne({ email })
       .then((user) => {
         return user
+      })
+      .catch((err) => {
+        return new Error(`User does not exist with this email ${err}`)
       })
   }
 
