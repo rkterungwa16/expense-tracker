@@ -5,6 +5,8 @@ class AuthController {
    */
   constructor (authService) {
     this.authService = authService
+    this.login = this.login.bind(this)
+    this.register = this.register.bind(this)
   }
 
   /**
@@ -17,6 +19,20 @@ class AuthController {
     this.authService.login(req.body.username, req.body.password)
       .then(user => user)
       .catch(err => err)
+  }
+
+  /**
+   *
+   * @param {Object} req request object
+   * @param {Object} res response object
+   * @param {Function} next the next middleware to be executed
+   */
+  register (req, res, next) {
+    const value = this.authService.createUser(req.body.username, req.body.password)
+    value.then((user) => {
+      return user
+    })
+    return value
   }
 }
 

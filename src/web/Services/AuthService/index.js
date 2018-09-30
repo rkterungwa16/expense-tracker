@@ -5,6 +5,7 @@ class AuthService {
    */
   constructor (userModel) {
     this.userModel = userModel
+    this.createUser = this.createUser.bind(this)
   }
 
   /**
@@ -14,12 +15,16 @@ class AuthService {
    * @param {String} password password of registered user
    * @return {Object} An object signifying registered user
    */
-  login (username, password) {
-    this.userModel.findByUsername(username)
-      .then((user) => {
-        return user
-      })
-      .catch((err) => err)
+  createUser (username, password) {
+    return new Promise((resolve, reject) => {
+      this.userModel.findUserByUsername(username)
+        .then((user) => {
+          return resolve(user)
+        })
+        .catch((err) => {
+          return reject(err)
+        })
+    })
   }
 
   checkToken () {}

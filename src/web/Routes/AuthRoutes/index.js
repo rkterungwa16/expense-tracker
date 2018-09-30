@@ -1,5 +1,6 @@
 const authRoute = (app, authController) => {
-  app.post('api/v1/login', authController.login)
+  console.log('posted this', authController)
+  app.post('/api/v1/register', authController.register)
 }
 
 export default authRoute
