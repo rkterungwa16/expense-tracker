@@ -33,10 +33,11 @@ class AuthController {
    */
   register (req, res, next) {
     const value = this.authService.createUser(req.body.username, req.body.password)
-    value.then((user) => {
-      return user
+    return new Promise((resolve, reject) => {
+      value
+        .then(user => resolve(user))
+        .catch(err => reject(err))
     })
-    return value
   }
 }
 

@@ -4,7 +4,7 @@
   "description": "App to track personal expense and make a budget",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test nyc mocha spec/**/*.spec.js --timeout 5000",
+    "test": "mocha --compilers js:@babel/register test/**/*-test.js --timeout 5000",
     "test:watch": "npm test -- --watch",
     "build": "babel src --out-dir lib",
     "start": "set NODE_ENV=production && babel-node src/web/index.js",
