@@ -7,7 +7,7 @@ class MongoDb extends Db {
     super()
     this.dbUrl = dbUrl
   }
-  connect (url) {
+  connect () {
     mongoose.connect(this.dbUrl, { safe: true })
       .then((data) => {
         logger.info(`database connection true: \n${data}`)
