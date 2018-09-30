@@ -1,4 +1,7 @@
 
+/**
+ * Authentication service
+ */
 class AuthService {
   /**
    * @param {Object} userModel
@@ -18,12 +21,8 @@ class AuthService {
   createUser (username, password) {
     return new Promise((resolve, reject) => {
       this.userModel.findUserByUsername(username)
-        .then((user) => {
-          return resolve(user)
-        })
-        .catch((err) => {
-          return reject(err)
-        })
+        .then(user => resolve(user))
+        .catch(err => reject(err))
     })
   }
 
