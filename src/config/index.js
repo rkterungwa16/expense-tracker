@@ -43,15 +43,23 @@ const test = {
   facebook: {}
 }
 
+/**
+ * Class to determine environment in use
+ * assign appropriate config
+ */
 class ConfigSettings {
-  getConfig (env) {
-    if (env === 'development') {
+  /**
+   *
+   * @param {*} currentEnv
+   * @return {Object} configuration object
+   */
+  getConfig (currentEnv) {
+    if (currentEnv === 'development') {
       return development
-    } else if (env === 'test') {
+    } if (currentEnv === 'test') {
       return test
-    } else {
-      throw new Error('There is no configuration for this environment')
     }
+    throw new Error('There is no configuration for this environment')
   }
 }
 
